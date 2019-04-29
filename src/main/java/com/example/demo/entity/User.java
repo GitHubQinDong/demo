@@ -1,9 +1,10 @@
-package com.example.demo.domain;
+package com.example.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements Serializable{
     @Id
     @GeneratedValue
     private Long id;
@@ -25,7 +26,7 @@ public class User {
     @JsonBackReference
     private Department department;
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role",joinColumns = {@JoinColumn(name = "user_id")},inverseJoinColumns = {@JoinColumn(name = "role_id")})
+    @JoinTable(name = "user_role",joinColumns = {@JoinColumn(name = "user_id")},inverseJoinColumns = {@JoinColumn(name = "roles_id")})
     private List<Role> roles;
 
     public User() {

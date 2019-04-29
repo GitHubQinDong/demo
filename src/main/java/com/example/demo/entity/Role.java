@@ -1,9 +1,10 @@
-package com.example.demo.domain;
+package com.example.demo.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 /**
  * @author qind6
@@ -11,7 +12,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "role")
-public class Role {
+public class Role implements Serializable{
     @Id
     @GeneratedValue
     private Long id;
